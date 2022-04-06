@@ -22,30 +22,29 @@ These are the only two combinations.
 #include<bits/stdc++.h>
 using namespace std;
 
-void combinationSum(int index, vector<int> &arr,vector<int> &result, vector<vector<int>> &finalResult, int target){
+void combinationSumSolver(int index, vector<int> &arr,vector<int> &result, vector<vector<int> >&finalResult, int target){
  if(index == arr.size()){
      if(target==0){
          finalResult.push_back(result);
      }
      return;
  }
- if(arr[index]<=target)
- {
+ if(arr[index]<=target){
  result.push_back(arr[index]);
- combinationSum(index,arr,result,finalResult,target-arr[index]);
+ combinationSumSolver(index,arr,result,finalResult,target-arr[index]);
  result.pop_back();
  }
 
- combinationSum(index+1,arr,result,finalResult,target);
+ combinationSumSolver(index+1,arr,result,finalResult,target);
 }
 
 
 int main(){
-    vector<int> candidates = {2,3,6,7};
-    int target = 7;
+    vector<int> candidates = {10,1,2,7,6,1,5};
+    int target = 8;
     vector<int> result;
     vector<vector<int>> finalResult;
-    combinationSum(0,candidates,result,finalResult,target);
+    combinationSumSolver(0,candidates,result,finalResult,target);
     for(auto i: finalResult){
         for(auto j:i){
             cout<<j<<" ";
