@@ -11,29 +11,25 @@ Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 using namespace std;
 
 /* TC: O(n! * n)
-   SC: O(n)
+   SC: O(1)
 */
-void permutations(unordered_map<int,int>uMap,vector<int> &arr,vector<int>&result, vector<vector<int> >&finalResult){
-if(result.size() == arr.size()){
-    finalResult.push_back(result);
-    return;
-}
-for(int i=0;i<arr.size();i++){
-    if(uMap[arr[i]]) continue;
-    result.push_back(arr[i]);
-    uMap[arr[i]]++;
-    permutations(uMap,arr,result,finalResult);
-    result.pop_back();
-    uMap[arr[i]]--;
-}
+void permutationsTwo(int index,vector<int> &arr, vector<vector<int> >&finalResult){
+  if(index == arr.size()){
+      finalResult.push_back(arr);
+  }
+  for(int i=index;i<arr.size();i++){
+      swap(arr[index],arr[i]);
+      permutationsTwo(index+1,arr,finalResult);
+       swap(arr[i],arr[index]);
+      
+  }
 }
 
 int main(){
     vector<int> arr= {1,2,3};
     vector<vector<int>> finalResult;
     unordered_map<int,int> uMap;
-    vector<int> result;
-    permutations(uMap,arr,result,finalResult);
+    permutationsTwo(0,arr,finalResult);
     for(auto i:finalResult){
         for(auto j:i){
             cout<<j<<" ";
