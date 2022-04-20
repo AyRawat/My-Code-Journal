@@ -36,8 +36,8 @@ bool sudokuSolver(vector<vector<char>> &board){
                  board[i][j]='.';
                 }
              }
-           }
-           return false;
+                return false;
+           } 
         }
     }
 }
