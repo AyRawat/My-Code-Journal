@@ -1,13 +1,11 @@
-  #include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+  struct ListNode {
+      int val;
+      ListNode *next;
+      ListNode(int x) : val(x), next(NULL) {}
+  };
 
-struct LL{
-    LL* next;
-    int val;
-    LL():val(0),next(nullptr){}
-    LL(int data): val(data), next(nullptr){}
-    LL(int data, LL *next): val(data) , next(next){}
-};
   
   ListNode* reverseList(ListNode *head){
        if(head==NULL || head->next==NULL) return head;
@@ -34,4 +32,18 @@ struct LL{
         }
         return true;
         
+    }
+
+    //Awesome Soltuion
+        ListNode* temp;
+    bool isPalindrome(ListNode* head) {
+        temp = head;
+        return check(head);
+    }
+    
+    bool check(ListNode* p) {
+        if (NULL == p) return true;
+        bool isPal = check(p->next) & (temp->val == p->val);
+        temp = temp->next;
+        return isPal;
     }
