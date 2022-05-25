@@ -39,19 +39,17 @@ int solve(vector<int> &nums){
     return res;
 }
 int longestConsecutive(vector < int > & nums) {
-  set < int > hashSet;
-  for (int num: nums) {
-    hashSet.insert(num);
-  }
+ unordered_set<int> hSet(nums.begin(), nums.end());
 
   int longestStreak = 0;
 
   for (int num: nums) {
-    if (!hashSet.count(num - 1)) {
-      int currentNum = num;
-      int currentStreak = 1;
+    if (!hSet.count(num - 1)) {
+      int currentNum = num+1;
 
-      while (hashSet.count(currentNum + 1)) {
+      int currentStreak = 1;
+      cout<<currentNum<<" "<<currentStreak<<endl;
+      while (hSet.count(currentNum)) {
         currentNum += 1;
         currentStreak += 1;
       }
@@ -62,8 +60,7 @@ int longestConsecutive(vector < int > & nums) {
 
   return longestStreak;
 }
-
-
+   
 
 int main(){
     vector<int> nums = {100,4,200,1,3,2};
