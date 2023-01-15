@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Longest Path Between 2 Nodes
-// Paths does not need to pass via root node
 
 struct BinaryTree
 {
@@ -16,22 +14,6 @@ struct BinaryTree
         right = NULL;
     }
 };
-
-
-//BruteForce Solution
-int height(BinaryTree* root) {
-    if(root == NULL) return 0;
-    return 1 + max(height(root->left) , height(root->right));
-}
-void findMaxHeightBF(BinaryTree* root , int &maxH){
-    if(root==NULL) return;
-    int lH = height(root->left);
-    int rH = height(root->right);
-
-    maxH = max(maxH , lH+rH);
-    findMaxHeightBF(root->left , maxH);
-    findMaxHeightBF(root->right , maxH);
-}
 struct BinaryTree *newBinaryTree(int data)
 {
     struct BinaryTree *BinaryTree = (struct BinaryTree *)malloc(sizeof(struct BinaryTree));
@@ -41,19 +23,28 @@ struct BinaryTree *newBinaryTree(int data)
 
     return (BinaryTree);
 }
+int height(BinaryTree *root)
+{
+    if (root == NULL)
+        return 0;
+    int lH = height(root->left);
+    int rH = height(root->right);
 
-//Using the height of tree concep to find the diameter as well
-int diameterOfTree(BinaryTree* root, int &maxH){
-    if(root == NULL) return 0;
-
-    int lH = diameterOfTree(root->left,maxH);
-    int rH = diameterOfTree(root->right, maxH);
-    maxH = max(maxH , lH + rH); 
-    return 1 + max(lH,rH);
+    return 1 + max(lH, rH);
 }
 
-int main(){
-        struct BinaryTree *root = newBinaryTree(3);
+int maxPathSum(BinaryTree *root, int &maxH)
+{
+    if (root == NULL)
+        return 0;
+    int lH = maxPathSum(root->left, maxH);
+    int rH = maxPathSum(root->right,maxH);
+    maxH = max(maxH , lH + rH +root->val);
+    return root->val + max(lH, rH);
+}
+int main()
+{
+    struct BinaryTree *root = newBinaryTree(3);
     root->left = newBinaryTree(9);
     root->right = newBinaryTree(20);
     root->left->left = newBinaryTree(4);
@@ -64,7 +55,7 @@ int main(){
     root->right->right->left = newBinaryTree(9);
     root->right->right->right = newBinaryTree(10);
     int maxH = 0;
-    diameterOfTree(root,maxH);
+     maxPathSum(root,maxH);
     cout<<maxH<<endl;
     return 0;
 }
