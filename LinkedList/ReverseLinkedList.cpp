@@ -21,7 +21,7 @@ LL* reverseListIteratively(LL* head){
     return newHead;
 }
 LL* reverseLinkedList(LL* head){
-    if(head->next == NULL) return head;
+    if(head == NULL || head->next == NULL) return head;
    LL*rest_head =  reverseLinkedList(head->next);
    LL* rest_tail =head->next;
    rest_tail->next = head;
