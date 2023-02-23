@@ -45,7 +45,6 @@ dp[1] = max(money[0] , money[1]);
 for(int i=2;i<money.size();i++){
     dp[i] = max(dp[i-2]+money[i],dp[i-1]);
 }
-return dp[money.size()-1];
 
 return dp[dp.size()-1];
 }
