@@ -1,5 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+//Readable and Easy solution
+string longestCommonPrefix(vector<string> &arr, int n)
+{
+    // Write your code here
+    if(n==0) return "";
+    if(n == 1) return arr[0];
+    string prefix = "";
+    for(int i=0;i<arr[0].length();i++){
+       char character = arr[0][i];
+       for (int j = 0; j < n; j++) {
+           if(arr[j][i] != character) return prefix;
+       }
+       prefix = prefix + character;
+    }  
+    return prefix;
+}
+
+//Lengthy approach
     string longestCommonPrefix(vector<string>& strs) {
      string res = "";
         if(strs.size()==0) return res;
