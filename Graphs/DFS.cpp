@@ -1,3 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 void dfs(int V, vector<int> adj[] , vector<int> &visited , vector<int> &ls){
         if(!visited[V]){
             visited[V] = 1;
