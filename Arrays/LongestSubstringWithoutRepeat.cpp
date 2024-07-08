@@ -20,25 +20,30 @@ int solve(string str){
 }
 
 //Optimized approach
-int optimal(string str){
-    int uMap[27] = {0};
-    int l = 0 ;
-    int r = 0;
-    int maxAns = INT_MIN;
-    int answer = 0;
-    while(l<str.size() && r<str.size()){
-        if(uMap[str[r] - 'a']==0){
-          uMap[str[r] - 'a'] = 1;
-           r++;
-           answer = r - l +1;
-        }else{
-           uMap[str[l] - 'a'] = 0;
-           l++;
-        }
-        maxAns = max(maxAns , answer);
+
+int longestSubstrDistinctChars (string S)
+{
+    // your code here
+    vector<int> uMap(256,-1);
+    int l=0;
+    int r=0;
+    int maxLen = 0;
+    int len = 0;
+    while( r < S.size()) {
+      if(uMap[S[r]]!=-1){
+          if(uMap[S[r]] >= l){
+              l = uMap[S[r]] + 1;
+          }
+      }
+      len = r - l + 1;
+      maxLen = max(maxLen, len);
+        uMap[S[r]] = r;
+        r++;
     }
-    return maxAns;
+    return maxLen;
 }
+
+
 int main() {
   string str = "abcabcbb";
   cout << "The length of the longest substring without repeating characters is " << 
