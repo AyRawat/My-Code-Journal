@@ -57,8 +57,7 @@ while(!q.empty()){
     word[i] = original;
   }
 }
-return answer;
-}
+return answer;}
 
 int main(){
   return 0;
