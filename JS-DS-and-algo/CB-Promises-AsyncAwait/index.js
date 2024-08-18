@@ -37,3 +37,6 @@ newPrintUserName.then();
 Promise.all([])
   .then((res) => console.log(res))
   .catch((err) => console.log(err));
+Promise.race([]).then(res).catch(err);
+Promise.any([]).then().catch();
+Promise.allSettled([]);

@@ -5,6 +5,17 @@ using namespace std;
 #include <vector>
 using namespace std;
 
+//SHORT SOLUTION
+    vector<int> firstAndLast(int x, vector<int> &arr) {
+        // Code here
+        int lb = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
+        int ub = upper_bound(arr.begin(), arr.end(), x) - arr.begin();
+        
+        ub -= 1;
+        if(lb == -1 || ub == arr.size()||arr[lb]!= x || arr[ub] !=x ) return {-1};
+        return {lb, ub};
+    }
+
 int lowerBound(int target, vector<int> &nums) {
     int lo = 0;
     int hi = nums.size() - 1;

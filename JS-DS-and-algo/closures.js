@@ -78,6 +78,7 @@ var ModulePattern = (function () {
     },
   };
 })();
+
 //Make this function run only Once
 
 let view;
