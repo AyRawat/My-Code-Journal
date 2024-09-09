@@ -13,6 +13,12 @@ console.log(a); // 5
 
 //console.log(b); // Reference Error b is not defined
 
+let a = 10;
+var b = 20;
+
+console.log(window.b); // 10
+console.log(window.a); // undefined. A does not exist in window
+
 // Shadowing
 function test() {
   let a = "Hello";
@@ -49,6 +55,8 @@ illegalShadowing();
 var a = 34;
 var a = 94;
 console.log(a);
+94;
+
 // Let and const cannot be redeclared
 // Uncomment to see
 // let b;

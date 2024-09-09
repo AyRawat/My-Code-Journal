@@ -22,7 +22,7 @@ function abc() {
 /// 3.
 var x = 21;
 
-var fun = function () {
+var func = function () {
   console.log(x);
   var x = 30;
 };

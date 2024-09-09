@@ -149,3 +149,25 @@ console.timeEnd("First Call");
 console.time("Second Call");
 console.log(myMemoizeF(9467, 7649));
 console.timeEnd("Second Call");
+
+function test() {
+  for (var i = 0; i < 5; i++) {
+    setTimeout(() => {
+      console.log(i);
+    }, i * 1000);
+  }
+  console.log("Hello");
+}
+//Running this with var
+function testV() {
+  for (var i = 0; i < 5; i++) {
+    function close(y) {
+      setTimeout(() => {
+        console.log(y);
+      }, y * 1000);
+    }
+    close(i);
+  }
+}
+
+test();

@@ -92,3 +92,48 @@ const checkParan = (str) => {
 };
 
 console.log(checkParan("[}"));
+
+//Max Subarray sum
+function maxSubSum(arr) {
+  let sum = 0;
+  let maxSum = -1e9;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    if (sum > maxSum) maxSum = sum;
+    if (sum < 0) {
+      sum = 0;
+    }
+  }
+  return maxSum < 0 ? 0 : maxSum;
+}
+function printMaxSubSum(arr) {
+  let sum = 0;
+  let maxSum = -1e9;
+  let subArr = [];
+  let ansStart = -1;
+  let ansEnd = -1;
+  for (let i = 0; i < arr.length; i++) {
+    if (sum == 0) start = i;
+    sum += arr[i];
+    subArr.push();
+    if (sum > maxSum) {
+      maxSum = sum;
+      ansStart = start;
+      ansEnd = i;
+    }
+    if (sum < 0) {
+      sum = 0;
+    }
+  }
+  return maxSum < 0 ? 0 : maxSum;
+}
+
+//Guess the output
+a();
+function a() {
+  console.log("a");
+}
+b();
+var b = function () {
+  console.log("b");
+};
